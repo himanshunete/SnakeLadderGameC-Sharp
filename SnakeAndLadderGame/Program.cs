@@ -10,18 +10,18 @@ namespace SnakeAndLadderGame
             //Variables
             int numberOfPlayers = 1;
             int position = 0;
+            int numOfPlay = 1;
 
             //Constants
             int NoPlay = 0;
             int Ladder = 1;
             int Snake = 2;
-            int NUM_OF_PLAY = 20;
-
+            int WIN_POSITION = 100;
 
             Console.WriteLine(" Only " + numberOfPlayers + " player is playing the game, starting at position " + position + " now ");
 
             //Computation
-            for (int numOfPlay = 1; numOfPlay <= NUM_OF_PLAY; numOfPlay++)
+            while (position != WIN_POSITION)
             {
                 Random rand = new Random();
                 int diceNumber = rand.Next(1, 7);
@@ -40,11 +40,17 @@ namespace SnakeAndLadderGame
                     position = position - diceNumber;
                     if (position < 0)
                     {
-                        Environment.Exit(0);
+                        position = 0;
+                        Console.WriteLine(" Game restarts ");
                     }
                     Console.WriteLine("Player moves back to position:" + position);
                 }
-
+                if (position == WIN_POSITION)
+                {
+                    Console.WriteLine(" The Player wins the Snake ladder game ");
+                    Environment.Exit(0);
+                }
+                numOfPlay++;
             }
         }
     }
