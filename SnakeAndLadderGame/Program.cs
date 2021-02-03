@@ -13,7 +13,6 @@ namespace SnakeAndLadderGame
             Dictionary<int, int> map2 = new Dictionary<int, int>();
             //Variables
             int numberOfPlayers = 2;
-
             //Constants
             int NoPlay = 0;
             int Ladder = 1;
