@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SnakeAndLadderGame
 {
@@ -7,6 +9,7 @@ namespace SnakeAndLadderGame
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake and Ladder Game");
+            Dictionary<int, int> map = new Dictionary<int, int>();
             //Variables
             int numberOfPlayers = 1;
             int numOfPlay = 1;
@@ -18,12 +21,13 @@ namespace SnakeAndLadderGame
             int WIN_POSITION = 100;
             int[] position = new int[2000];
 
-            Console.WriteLine(" Only " + numberOfPlayers + " player is playing the game at position " + position + " now ");
+            Console.WriteLine(" Only " + numberOfPlayers + " player is at start position: 0 now ");
 
             //Computation
             while ( position[numOfPlay] != WIN_POSITION)
             {
                 position[0] = 0;
+                map.Add(numOfPlay, position[numOfPlay]);
                 Random rand = new Random();
                 int diceNumber = rand.Next(1, 7);
                 int option = rand.Next(0, 3);
@@ -54,6 +58,16 @@ namespace SnakeAndLadderGame
                 if (position[numOfPlay + 1] == WIN_POSITION)
                 {
                     Console.WriteLine(" The Player wins the Snake ladder game ");
+                    int m = map.Count;
+                    Console.WriteLine(m + " times the dice is rolled to win the game ");
+
+                    Console.WriteLine(" mapping of SnakeLadder is " + map);
+
+                    //get position
+                    foreach (int value in map.Values)
+                    {
+                        Console.WriteLine(" position after die roll is " + value);
+                    }
                     Environment.Exit(0);
                 }
 
